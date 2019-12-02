@@ -1,1 +1,23 @@
-login
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+    <h2 class="text-danger">{{error}}</h2>
+{% endif %}
+<h1>Login</h1>
+<form method="POST" action="{% url 'login' %}"> 
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <label class="col-sm-4"> Username </label>
+        <input type="text" class="form-control col-sm-8" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <label class="col-sm-4"> Password </label>
+        <input type="password" class="form-control col-sm-8" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3 d-flex justify-content-center">
+        <input type="submit" value="Login" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}
