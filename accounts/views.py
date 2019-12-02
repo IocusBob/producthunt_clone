@@ -1,9 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib import auth
+
 from django.http import HttpResponse
 
-# Create your views here.
 def signup(request):
-    return render(request, 'accounts/signup.html')
+    if request.method == 'POST':
+        if request.POST['password'] == request.POST['confirm_password']:
+            try:
+                user = User.objects.get(username = request.POST['username'])
+                return render(request, 'accounts/signup.html', {"error": f'Username "{user}" has been taken, please try a different username.'})
+            except User.DoesNotExist:
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
+                auth.login(request, user)
+                return redirect('home')
+        else:
+            return render(request, 'accounts/signup.html', {"error": 'Passwords must be identical'})
+
+    else:
+        return render(request, 'accounts/signup.html')
 
 def login(request):
     return render(request, 'accounts/login.html')
