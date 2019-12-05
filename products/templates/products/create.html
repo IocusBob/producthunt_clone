@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+    <h2 class="text-danger">{{error}}</h2>
+{% endif %}
+<h1>Create</h1>
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <label class="col-sm-4"> Title</label>
+        <input type="text" class="form-control col-sm-8" name="title" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <label class="col-sm-4">Body</label>
+        <input type="textbox" class="form-control col-sm-8" name="body" placeholder="Body" aria-label="Body" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <label class="col-sm-4">URL</label>
+        <input type="url" class="form-control col-sm-8" name="url" placeholder="Url" aria-label="Url" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <label class="col-sm-4">Icon</label>
+        <input type="file" class="form-control col-sm-8" name="icon" placeholder="Icon" aria-label="Icon" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <label class="col-sm-4">Image</label>
+        <input type="file" class="form-control col-sm-8" name="image" placeholder="Image" aria-label="Image" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3 d-flex justify-content-center">
+        <input type="submit" value="Login" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}
