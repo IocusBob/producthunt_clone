@@ -2,7 +2,7 @@
 
 
 {% block content%}
-<div class="row">
+<div class="row mt-3">
     <div class="col-2">
         <img class="img-fluid" src="{{ product.icon.url }}" alt="{{ product.name }}">
     </div>
@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
     <div class="col-8 text-center">
         <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
     </div>
@@ -24,12 +24,12 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
     <div class="col-4">
-        <h4>Hunted by {{ product.hunter.username }}</h4>
+        <h4><i class="fas fa-search"></i> Hunted by {{ product.hunter.username }}</h4>
     </div>
     <div class="col-4 text-right">
-    <h4>{{ product.pretty_published_date }}</h4>
+    <h4><i class="fas fa-calendar-day"></i> {{ product.pretty_published_date }}</h4>
     
     </div>
 </div>
